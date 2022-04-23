@@ -1,25 +1,8 @@
 import propTypes from 'prop-types'
-import styled from 'styled-components'
-import Average from 'components/Atoms/Average'
-import UserInfo from 'components/Atoms/UserInfo'
-import Button from 'components/Atoms/Button'
-
-const Wrapper = styled.li`
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 80%;
-  height: 100px;
-
-  :not(:last-child)::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: lightgray;
-  }
-`
+import Average from 'components/Atoms/Average/Average'
+import UserInfo from 'components/Atoms/UserInfo/UserInfo'
+import Button from 'components/Atoms/Button/Button'
+import { Wrapper } from './UserListItem.styles'
 
 const UsersListItem = ({ userData: { name, average, attendance } }) => {
   return (
