@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 28vw;
   height: 75vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};

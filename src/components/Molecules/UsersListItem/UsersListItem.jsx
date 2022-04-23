@@ -4,12 +4,12 @@ import UserInfo from 'components/Atoms/UserInfo/UserInfo'
 import Button from 'components/Atoms/Button/Button'
 import { Wrapper } from './UserListItem.styles'
 
-const UsersListItem = ({ userData: { name, average, attendance } }) => {
+const UsersListItem = ({ userData: { name, average, attendance }, onDelete }) => {
   return (
     <Wrapper key={name}>
       <Average avg={average} />
       <UserInfo userData={[name, attendance]} />
-      <Button />
+      <Button onClick={() => onDelete(name)} />
     </Wrapper>
   )
 }
