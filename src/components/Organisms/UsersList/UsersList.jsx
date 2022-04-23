@@ -1,37 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { users as usersData } from 'data/users'
-import UsersListItem from 'components/Molecules/UsersListItem/UsersListItem'
+import React from 'react'
 import { Wrapper, StyledList } from './UsersList.styles'
-import { mockAPI } from 'helpers/mockApi'
+import UsersListItem from 'components/Molecules/UsersListItem/UsersListItem'
 
-const UsersList = () => {
-  const [users, setUsers] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    setIsLoading(true)
-    mockAPI(1000, usersData).then((res) => {
-      setIsLoading(false)
-      setUsers(res)
-    })
-  }, [])
-
-  const deleteUser = (userName) => {
-    const filteredUsers = users.filter((user) => user.name !== userName)
-    setUsers(filteredUsers)
-  }
-
+const UsersList = ({ users, deleteUser, isLoading }) => {
   return (
     <Wrapper>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <StyledList>
-          {users.map((userData) => (
-            <UsersListItem onDelete={deleteUser} userData={userData} />
-          ))}
-        </StyledList>
-      )}
+      {isLoading ? <h1>Loading...</h1> : <h1>Users List</h1>}
+      <StyledList>
+        {users.map((userData) => (
+          <UsersListItem key={userData.name} deleteUser={deleteUser} userData={userData} />
+        ))}
+      </StyledList>
     </Wrapper>
   )
 }

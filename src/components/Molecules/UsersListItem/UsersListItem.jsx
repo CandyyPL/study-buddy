@@ -1,15 +1,15 @@
 import propTypes from 'prop-types'
 import Average from 'components/Atoms/Average/Average'
 import UserInfo from 'components/Atoms/UserInfo/UserInfo'
-import Button from 'components/Atoms/Button/Button'
+import DeleteButton from 'components/Atoms/DeleteButton/DeleteButton'
 import { Wrapper } from './UserListItem.styles'
 
-const UsersListItem = ({ userData: { name, average, attendance }, onDelete }) => {
+const UsersListItem = ({ userData: { name, average, attendance }, deleteUser }) => {
   return (
-    <Wrapper key={name}>
+    <Wrapper>
       <Average avg={average} />
       <UserInfo userData={[name, attendance]} />
-      <Button onClick={() => onDelete(name)} />
+      <DeleteButton onClick={() => deleteUser(name)} />
     </Wrapper>
   )
 }
