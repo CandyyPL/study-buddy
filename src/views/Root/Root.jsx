@@ -1,9 +1,7 @@
-import UsersList from 'components/UsersList/UsersList'
-
 const Root = () => {
   return (
     <>
-      <UsersList />
+      <h1>Hello ReactJS</h1>
     </>
   )
 }
