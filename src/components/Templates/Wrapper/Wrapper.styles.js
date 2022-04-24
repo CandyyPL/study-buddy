@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ViewWrapper = styled.div`
+export const Wrapper = styled.div`
   width: 28vw;
   height: fit-content;
   min-height: 20vh;

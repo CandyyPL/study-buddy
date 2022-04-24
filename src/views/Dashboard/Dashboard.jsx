@@ -1,11 +1,15 @@
+import { useContext } from 'react'
 import UsersList from 'components/Organisms/UsersList/UsersList'
-import { ViewWrapper } from 'components/Templates/ViewWrapper/ViewWrapper'
+import { Wrapper } from 'components/Templates/Wrapper/Wrapper.styles'
+import { UsersContext } from 'providers/UsersProvider'
 
-const Dashboard = ({ users, deleteUser }) => {
+const Dashboard = () => {
+  const { users } = useContext(UsersContext)
+
   return (
-    <ViewWrapper>
-      <UsersList users={users} deleteUser={deleteUser} />
-    </ViewWrapper>
+    <Wrapper>
+      <UsersList users={users} />
+    </Wrapper>
   )
 }
 
