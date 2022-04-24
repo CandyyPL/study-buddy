@@ -1,39 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { users as usersData } from 'data/users'
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import { StyledList } from './UsersList.styles'
+import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import UsersListItem from 'components/Molecules/UsersListItem/UsersListItem'
-import { Wrapper, StyledList } from './UsersList.styles'
-import { mockAPI } from 'helpers/mockApi'
+import { UserShape } from 'types'
+import { UsersContext } from 'providers/UsersProvider'
 
-const UsersList = () => {
-  const [users, setUsers] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    setIsLoading(true)
-    mockAPI(1000, usersData).then((res) => {
-      setIsLoading(false)
-      setUsers(res)
-    })
-  }, [])
-
-  const deleteUser = (userName) => {
-    const filteredUsers = users.filter((user) => user.name !== userName)
-    setUsers(filteredUsers)
-  }
+const UsersList = ({ users }) => {
+  const { deleteUser } = useContext(UsersContext)
 
   return (
-    <Wrapper>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <StyledList>
-          {users.map((userData) => (
-            <UsersListItem onDelete={deleteUser} userData={userData} />
-          ))}
-        </StyledList>
-      )}
-    </Wrapper>
+    <>
+      {users.length ? <StyledTitle>Users List</StyledTitle> : <StyledTitle>Loading...</StyledTitle>}
+      <StyledList>
+        {users.map((userData) => (
+          <UsersListItem key={userData.name} deleteUser={deleteUser} userData={userData} />
+        ))}
+      </StyledList>
+    </>
   )
+}
+
+UsersList.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.shape(UserShape)),
+  deleteUser: PropTypes.func,
+  isLoading: PropTypes.bool,
 }
 
 export default UsersList
