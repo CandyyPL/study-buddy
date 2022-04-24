@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ViewWrapper } from 'components/Templates/Wrapper/ViewWrapper'
+import { ViewWrapper } from 'components/Templates/ViewWrapper/ViewWrapper'
 import { StyledList } from './UsersList.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import UsersListItem from 'components/Molecules/UsersListItem/UsersListItem'

@@ -1,4 +1,4 @@
-import { ViewWrapper } from 'components/Templates/Wrapper/ViewWrapper'
+import { ViewWrapper } from 'components/Templates/ViewWrapper/ViewWrapper'
 import { StyledTitle } from './AddUser.styles'
 import FormField from 'components/Molecules/FromField/FromField'
 import { Button } from 'components/Atoms/Button/Button.styles'
