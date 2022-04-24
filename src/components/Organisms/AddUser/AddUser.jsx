@@ -1,11 +1,11 @@
-import { Wrapper } from './AddUser.styles'
+import { ViewWrapper } from 'components/Templates/Wrapper/ViewWrapper'
 import { StyledTitle } from './AddUser.styles'
 import FormField from 'components/Molecules/FromField/FromField'
 import { Button } from 'components/Atoms/Button/Button.styles'
 
 const AddUser = ({ handleInputChange, handleAddUser, formValues }) => {
   return (
-    <Wrapper as='form' onSubmit={handleAddUser}>
+    <ViewWrapper as='form' onSubmit={handleAddUser}>
       <StyledTitle>Add new Student</StyledTitle>
       <FormField label='Name' id='name' name='name' value={formValues.name} onChange={handleInputChange} />
       <FormField
@@ -17,7 +17,7 @@ const AddUser = ({ handleInputChange, handleAddUser, formValues }) => {
       />
       <FormField label='Average' id='average' name='average' value={formValues.average} onChange={handleInputChange} />
       <Button type='submit'>Save</Button>
-    </Wrapper>
+    </ViewWrapper>
   )
 }
 
