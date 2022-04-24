@@ -8,14 +8,14 @@ import { UserShape } from 'types'
 
 const UsersList = ({ users, deleteUser, isLoading }) => {
   return (
-    <ViewWrapper>
-      {isLoading ? <StyledTitle>Loading...</StyledTitle> : <StyledTitle>Users List</StyledTitle>}
+    <>
+      {users.length ? <StyledTitle>Users List</StyledTitle> : <StyledTitle>Loading...</StyledTitle>}
       <StyledList>
         {users.map((userData) => (
           <UsersListItem key={userData.name} deleteUser={deleteUser} userData={userData} />
         ))}
       </StyledList>
-    </ViewWrapper>
+    </>
   )
 }
 

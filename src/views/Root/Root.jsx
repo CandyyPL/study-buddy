@@ -4,11 +4,11 @@ import { theme } from 'assets/styles/Theme'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
 import { Wrapper } from './Root.styles'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import UsersList from 'components/Organisms/UsersList/UsersList'
-import AddUser from 'components/Organisms/AddUser/AddUser'
+import AddUser from 'views/AddUser/AddUser'
 import { users as usersData } from 'data/users'
 import { mockAPI } from 'helpers/mockApi'
 import Navigation from 'components/Organisms/Navigation/Navigation'
+import Dashboard from 'views/Dashboard/Dashboard'
 
 const initialFormState = {
   name: '',
@@ -18,14 +18,11 @@ const initialFormState = {
 
 const Root = () => {
   const [users, setUsers] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
 
   const [formValues, setFormValues] = useState(initialFormState)
 
   useEffect(() => {
-    setIsLoading(true)
     mockAPI(1000, usersData).then((res) => {
-      setIsLoading(false)
       setUsers(res)
     })
   }, [])
@@ -63,7 +60,7 @@ const Root = () => {
         <Wrapper>
           <Navigation />
           <Routes>
-            <Route path='/' element={<UsersList users={users} deleteUser={deleteUser} isLoading={isLoading} />} />
+            <Route path='/' element={<Dashboard users={users} deleteUser={deleteUser} />} />
             <Route
               path='/add-user'
               element={
