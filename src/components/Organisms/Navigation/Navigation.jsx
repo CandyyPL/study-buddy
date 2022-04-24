@@ -1,5 +1,4 @@
-import { StyledNav, StyledNavList, StyledLogo } from './Navigation.styles'
-import { Link } from 'react-router-dom'
+import { StyledNav, StyledNavList, StyledLogo, StyledLink } from './Navigation.styles'
 
 const Navigation = () => {
   return (
@@ -8,18 +7,12 @@ const Navigation = () => {
         Study <br /> Buddy
       </StyledLogo>
       <StyledNavList>
-        <Link to='/'>
-          <li>Dashboard</li>
-        </Link>
-        <Link to='/add-user'>
-          <li>Add user</li>
-        </Link>
-        <Link to='/settings'>
-          <li>Settings</li>
-        </Link>
-        <Link to='/logout'>
-          <li>Logout</li>
-        </Link>
+        <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/'>
+          Dashboard
+        </StyledLink>
+        <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/add-user'>
+          Add user
+        </StyledLink>
       </StyledNavList>
     </StyledNav>
   )

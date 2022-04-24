@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const StyledNav = styled.nav`
   position: absolute;
-  width: 180px;
+  width: 200px;
   height: 100vh;
   left: 0;
   top: 0;
@@ -14,45 +15,62 @@ export const StyledNav = styled.nav`
   align-items: center;
 `
 
+const navBottomElevation = 40
 export const StyledLogo = styled.div`
   width: 100%;
   height: 80px;
   background-color: ${({ theme }) => theme.colors.darkGrey};
-  transform: translateY(40px);
-  padding: 20px;
+  transform: translateY(${navBottomElevation}px);
+  padding: 30px;
   text-align: right;
   font-family: 'Montserrat', sans-serif;
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
-  text-overflow: ellipsis;
-  white-space: nowrap;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `
 
-export const StyledNavList = styled.ul`
+export const StyledNavList = styled.div`
   width: 100%;
-  transform: translateY(50px);
-  padding: 20px;
-  list-style: none;
+  min-height: 500px;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 30px;
+  transform: translateY(${navBottomElevation}px);
+`
 
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.darkGrey};
+export const StyledLink = styled(NavLink)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  position: relative;
+  margin: 20px 0;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: bold;
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
   }
 
-  li {
-    width: 100%;
-    text-align: right;
-    margin: 25px 0;
-    font-size: ${({ theme }) => theme.fontSize.l};
-    font-weight: 700;
+  &::after {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    content: '';
+    position: absolute;
+    background-color: ${({ theme }) => theme.colors.darkGrey};
+    width: 20px;
+    height: 3px;
+    top: 46%;
+    right: -30px;
+  }
+
+  &.active {
+    ::after {
+      opacity: 0.8;
+    }
   }
 `
