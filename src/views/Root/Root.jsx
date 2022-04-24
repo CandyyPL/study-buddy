@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme } from 'assets/styles/Theme'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
-import { Wrapper, StyledNav } from './Root.styles'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Wrapper } from './Root.styles'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import UsersList from 'components/Organisms/UsersList/UsersList'
 import AddUser from 'components/Organisms/AddUser/AddUser'
 import { users as usersData } from 'data/users'
 import { mockAPI } from 'helpers/mockApi'
+import Navigation from 'components/Organisms/Navigation/Navigation'
 
 const initialFormState = {
   name: '',
@@ -60,10 +61,7 @@ const Root = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Wrapper>
-          <StyledNav>
-            <Link to='/'>Home</Link>
-            <Link to='/add-user'>Add user</Link>
-          </StyledNav>
+          <Navigation />
           <Routes>
             <Route path='/' element={<UsersList users={users} deleteUser={deleteUser} isLoading={isLoading} />} />
             <Route

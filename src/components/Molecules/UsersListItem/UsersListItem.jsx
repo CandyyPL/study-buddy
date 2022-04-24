@@ -3,6 +3,7 @@ import Average from 'components/Atoms/Average/Average'
 import UserInfo from 'components/Atoms/UserInfo/UserInfo'
 import DeleteButton from 'components/Atoms/DeleteButton/DeleteButton'
 import { Wrapper } from './UserListItem.styles'
+import { UserShape } from 'types'
 
 const UsersListItem = ({ userData: { name, average, attendance }, deleteUser }) => {
   return (
@@ -15,11 +16,7 @@ const UsersListItem = ({ userData: { name, average, attendance }, deleteUser }) 
 }
 
 UsersListItem.propTypes = {
-  userData: propTypes.shape({
-    name: propTypes.string.isRequired,
-    average: propTypes.string.isRequired,
-    attendance: propTypes.string.isRequired,
-  }),
+  userData: propTypes.shape(UserShape),
 }
 
 export default UsersListItem

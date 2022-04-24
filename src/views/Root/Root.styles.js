@@ -7,15 +7,5 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
-`
-
-export const StyledNav = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    margin: 20px;
-  }
+  background-color: ${({ theme }) => theme.colors.lightLightGrey};
 `

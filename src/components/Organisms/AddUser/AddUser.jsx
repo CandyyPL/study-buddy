@@ -1,11 +1,12 @@
-import { Wrapper } from '../UsersList/UsersList.styles'
+import { Wrapper } from './AddUser.styles'
+import { StyledTitle } from './AddUser.styles'
 import FormField from 'components/Molecules/FromField/FromField'
 import { Button } from 'components/Atoms/Button/Button.styles'
 
 const AddUser = ({ handleInputChange, handleAddUser, formValues }) => {
   return (
     <Wrapper as='form' onSubmit={handleAddUser}>
-      <h1>Add new Student</h1>
+      <StyledTitle>Add new Student</StyledTitle>
       <FormField label='Name' id='name' name='name' value={formValues.name} onChange={handleInputChange} />
       <FormField
         label='Attendance'
