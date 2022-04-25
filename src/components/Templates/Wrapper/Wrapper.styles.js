@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 28vw;
+  width: 500px;
   height: fit-content;
   min-height: 20vh;
   max-height: 90vh;
