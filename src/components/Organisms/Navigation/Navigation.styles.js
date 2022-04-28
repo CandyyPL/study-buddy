@@ -2,11 +2,8 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 export const StyledNav = styled.nav`
-  position: absolute;
   width: 200px;
   height: 100vh;
-  left: 0;
-  top: 0;
   background-color: ${({ theme }) => theme.colors.lightLightGrey};
   border-right: 1px solid ${({ theme }) => theme.colors.darkGrey};
   display: flex;

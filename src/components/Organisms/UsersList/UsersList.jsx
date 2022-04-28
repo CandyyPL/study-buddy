@@ -11,7 +11,7 @@ const UsersList = ({ users }) => {
 
   return (
     <>
-      {users.length ? <StyledTitle>Users List</StyledTitle> : <StyledTitle>Loading...</StyledTitle>}
+      {users.length ? null : <StyledTitle>Loading...</StyledTitle>}
       <StyledList>
         {users.map((userData) => (
           <UsersListItem key={userData.name} deleteUser={deleteUser} userData={userData} />

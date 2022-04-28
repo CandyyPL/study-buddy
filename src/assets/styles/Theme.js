@@ -12,7 +12,9 @@ export const theme = {
   },
   fontSize: {
     l: '20px',
+    mm: '18px',
     m: '15px',
+    ss: '12px',
     s: '10px',
   },
 }

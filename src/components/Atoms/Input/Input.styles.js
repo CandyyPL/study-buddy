@@ -11,6 +11,6 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   }
 `
