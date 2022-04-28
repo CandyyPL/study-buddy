@@ -11,6 +11,8 @@ export const theme = {
     success: '#8fcb81',
   },
   fontSize: {
+    xl: '28px',
+    ll: '24px',
     l: '20px',
     mm: '18px',
     m: '15px',

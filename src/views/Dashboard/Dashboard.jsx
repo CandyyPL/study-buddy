@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import UsersList from 'components/Organisms/UsersList/UsersList'
-import { Wrapper } from 'components/Templates/Wrapper/Wrapper.styles'
+import { Wrapper } from 'components/Organisms/UsersList/UsersList.styles'
 import { UsersContext } from 'providers/UsersProvider'
 
 const Dashboard = () => {

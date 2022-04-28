@@ -5,7 +5,7 @@ export const Wrapper = styled.li`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 80px;
+  min-height: 80px;
 
   :not(:last-child)::after {
     content: '';

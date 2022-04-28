@@ -1,6 +1,6 @@
 import { useContext, useEffect, useReducer, useRef } from 'react'
-import { Wrapper } from 'components/Templates/Wrapper/Wrapper.styles'
-import { StyledTitle } from './AddUser.styles'
+import { Wrapper } from './AddUser.styles'
+import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import FormField from 'components/Molecules/FromField/FromField'
 import { Button } from 'components/Atoms/Button/Button.styles'
 import { UsersContext } from 'providers/UsersProvider'
