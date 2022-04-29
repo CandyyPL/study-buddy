@@ -1,27 +1,49 @@
-import { Button } from 'components/Atoms/Button/Button.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
-import { Wrapper, NewsItem } from './NewsSection.styles'
+import { Wrapper, NewsItem, ArticleTitle, ArticleBody, StyledButton } from './NewsSection.styles'
 
 const News = () => {
   return (
     <Wrapper>
       <StyledTitle>University news feed</StyledTitle>
       <NewsItem>
-        <h3>News title</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt architecto, beatae expedita alias reiciendis
-          quaerat reprehenderit maxime id, autem laudantium quidem eligendi voluptates labore suscipit commodi animi
-          delectus blanditiis libero quam facere inventore! Reiciendis dolor expedita atque quam doloremque libero.
-        </p>
-        <Button>Read more</Button>
+        <ArticleTitle>
+          <h3>New computers for all lecturers</h3>
+          <p>Staff news</p>
+        </ArticleTitle>
+        <ArticleBody>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
+            voluptatem quam iure, deleniti alias!
+          </p>
+        </ArticleBody>
+        <StyledButton>Read more</StyledButton>
       </NewsItem>
       <NewsItem>
-        <h3>News title</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem ratione similique. Suscipit est, maiores
-          provident placeat id quam inventore?
-        </p>
-        <Button>Read more</Button>
+        <ArticleTitle>
+          <h3>Business course for best students</h3>
+          <p>Students</p>
+        </ArticleTitle>
+        <ArticleBody>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
+            voluptatem quam iure, deleniti alias!
+          </p>
+          <img src='https://source.unsplash.com/random/180x120' alt='' style={{ borderRadius: 5 }} />
+        </ArticleBody>
+        <StyledButton>Read more</StyledButton>
+      </NewsItem>
+      <NewsItem>
+        <ArticleTitle>
+          <h3>All exams postponed</h3>
+          <p>Staff news</p>
+        </ArticleTitle>
+        <ArticleBody>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
+            voluptatem quam iure, deleniti alias!
+          </p>
+        </ArticleBody>
+        <StyledButton>Read more</StyledButton>
       </NewsItem>
     </Wrapper>
   )
