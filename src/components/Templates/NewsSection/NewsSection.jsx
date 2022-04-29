@@ -1,50 +1,28 @@
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
-import { Wrapper, NewsItem, ArticleTitle, ArticleBody, StyledButton } from './NewsSection.styles'
+import { Wrapper } from './NewsSection.styles'
+import NewsItem from 'components/Molecules/NewsItem/NewsItem'
+
+const data = [
+  {
+    title: 'New computers for all lecturers',
+    category: 'Staff news',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nisi nihil iusto incidunt repellendus eius est error facere aliquid fuga autem, hic voluptatum. Fugit voluptatibus rem dolor accusantium pariatur incidunt recusandae doloremque esse quas omnis?',
+  },
+  {
+    title: 'School library redesign',
+    category: 'About school',
+    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat commodi magni delectus a natus nobis eum quos, dicta odio. Dolores!',
+  },
+]
 
 const News = () => {
   return (
     <Wrapper>
       <StyledTitle>University news feed</StyledTitle>
-      <NewsItem>
-        <ArticleTitle>
-          <h3>New computers for all lecturers</h3>
-          <p>Staff news</p>
-        </ArticleTitle>
-        <ArticleBody>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
-            voluptatem quam iure, deleniti alias!
-          </p>
-        </ArticleBody>
-        <StyledButton>Read more</StyledButton>
-      </NewsItem>
-      <NewsItem>
-        <ArticleTitle>
-          <h3>Business course for best students</h3>
-          <p>Students</p>
-        </ArticleTitle>
-        <ArticleBody>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
-            voluptatem quam iure, deleniti alias!
-          </p>
-          <img src='https://source.unsplash.com/random/180x120' alt='' style={{ borderRadius: 5 }} />
-        </ArticleBody>
-        <StyledButton>Read more</StyledButton>
-      </NewsItem>
-      <NewsItem>
-        <ArticleTitle>
-          <h3>All exams postponed</h3>
-          <p>Staff news</p>
-        </ArticleTitle>
-        <ArticleBody>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur aliquam a quod sit. Sunt reprehenderit
-            voluptatem quam iure, deleniti alias!
-          </p>
-        </ArticleBody>
-        <StyledButton>Read more</StyledButton>
-      </NewsItem>
+      {data.length &&
+        data.map(({ title, category, body }) => {
+          return <NewsItem key={title} title={title} category={category} body={body} />
+        })}
     </Wrapper>
   )
 }
