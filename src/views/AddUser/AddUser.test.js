@@ -16,6 +16,7 @@ describe('Add User', () => {
     fireEvent.change(screen.getByTestId('Name'), { target: { value: 'Zdzislawovic' } })
     fireEvent.change(screen.getByTestId('Attendance'), { target: { value: '55%' } })
     fireEvent.change(screen.getByTestId('Average'), { target: { value: '4.5' } })
+    fireEvent.click(screen.getByTestId('Consent'))
     fireEvent.click(screen.getByText('Save'))
     screen.getByText('Zdzislawovic')
   })

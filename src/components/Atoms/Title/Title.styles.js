@@ -5,5 +5,5 @@ export const StyledTitle = styled.div`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.darkGrey};
   font-family: 'Roboto', sans-serif;
-  margin: 10px 0;
+  margin: 15px 0;
 `

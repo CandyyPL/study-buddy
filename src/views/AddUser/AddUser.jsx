@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { Wrapper } from './AddUser.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import FormField from 'components/Molecules/FromField/FromField'

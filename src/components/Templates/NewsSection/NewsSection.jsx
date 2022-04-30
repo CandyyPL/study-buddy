@@ -1,30 +1,56 @@
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import { Wrapper } from './NewsSection.styles'
 import NewsItem from 'components/Molecules/NewsItem/NewsItem'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
-const data = [
-  {
-    title: 'New computers for all lecturers',
-    category: 'Staff news',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nisi nihil iusto incidunt repellendus eius est error facere aliquid fuga autem, hic voluptatum. Fugit voluptatibus rem dolor accusantium pariatur incidunt recusandae doloremque esse quas omnis?',
-  },
-  {
-    title: 'School library redesign',
-    category: 'About school',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat commodi magni delectus a natus nobis eum quos, dicta odio. Dolores!',
-  },
-]
+const API_KEY = process.env.REACT_APP_DATOCMS_TOKEN
 
-const News = () => {
+const NewsSection = () => {
+  const [articles, setArticles] = useState([])
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query: `
+          {
+            allArticles {
+              id
+              title
+              category
+              content
+            }
+          }`,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        setArticles(data.allArticles)
+      })
+      .catch(() => {
+        setError(`Sorry, we couldn't load news for you`)
+      })
+  }, [])
+
   return (
     <Wrapper>
       <StyledTitle>University news feed</StyledTitle>
-      {data.length &&
-        data.map(({ title, category, body }) => {
-          return <NewsItem key={title} title={title} category={category} body={body} />
-        })}
+      {articles.length ? (
+        articles.map(({ id, title, category, content }) => {
+          return <NewsItem key={id} title={title} category={category} content={content} />
+        })
+      ) : (
+        <StyledTitle>{error ? error : 'Loading...'}</StyledTitle>
+      )}
     </Wrapper>
   )
 }
 
-export default News
+export default NewsSection
