@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 500px;
+  width: 580px;
   height: 75vh;
   display: flex;
   flex-direction: column;
@@ -11,9 +11,6 @@ export const Wrapper = styled.div`
   border-radius: 25px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.4);
   padding: 50px;
-  grid-row: 2/3;
-  grid-column: 2;
-  place-self: center;
 `
 
 export const StyledList = styled.ul`
@@ -24,4 +21,5 @@ export const StyledList = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 `

@@ -7,7 +7,7 @@ const Navigation = () => {
         Study <br /> Buddy
       </StyledLogo>
       <StyledNavList>
-        <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/'>
+        <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/dashboard'>
           Dashboard
         </StyledLink>
         <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/add-user'>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { users as usersData } from 'data/users'
-import { mockAPI } from 'helpers/mockApi'
+import axios from 'axios'
 
 export const UsersContext = React.createContext({
   users: [],
@@ -12,9 +11,7 @@ const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    mockAPI(1000, usersData).then((res) => {
-      setUsers(res)
-    })
+    axios.get('/students').then(({ data: { students } }) => setUsers(students))
   }, [])
 
   const deleteUser = (userName) => {
