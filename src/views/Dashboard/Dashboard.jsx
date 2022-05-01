@@ -12,8 +12,11 @@ const Dashboard = () => {
   const [groups, setGroups] = useState([])
 
   useEffect(() => {
-    getGroups().then((groups) => setGroups(groups))
-  }, [])
+    ;(async () => {
+      const groups = await getGroups()
+      setGroups(groups)
+    })()
+  }, [getGroups])
 
   const { id } = useParams()
 

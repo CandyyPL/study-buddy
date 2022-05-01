@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export const useStudents = () => {
@@ -11,7 +10,7 @@ export const useStudents = () => {
     }
   }
 
-  const getStudentsByGroup = async (groupId) => {
+  const getStudents = async (groupId = '') => {
     try {
       const result = axios.get(`/students${groupId ? `?group=${groupId}` : ''}`)
       return result
@@ -20,5 +19,5 @@ export const useStudents = () => {
     }
   }
 
-  return { getGroups, getStudentsByGroup }
+  return { getGroups, getStudents }
 }

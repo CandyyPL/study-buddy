@@ -7,21 +7,22 @@ import {
   StyledResultsItem,
 } from './SearchBar.styles'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useCombobox } from 'downshift'
+import { useStudents } from 'hooks/useStudents'
 
 const SearchBar = () => {
   const [allStudents, setAllStudents] = useState([])
   const [matchingStundents, setMatchingStudents] = useState([])
 
+  const { getStudents } = useStudents()
+
   useEffect(() => {
-    axios.get('/students').then(({ data: { students } }) => {
-      setAllStudents(students)
-    })
+    getStudents().then(({ data: { students } }) => setAllStudents(students))
   }, [])
 
   const getMatchingStudents = ({ inputValue }) => {
     const matching = allStudents.filter(({ name }) => name.toLowerCase().includes(inputValue.toLowerCase()))
+
     if (matching.length) setMatchingStudents(matching)
     else setMatchingStudents([{ id: '404', name: 'No matches found' }])
   }

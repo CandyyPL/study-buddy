@@ -8,13 +8,18 @@ import { useStudents } from 'hooks/useStudents'
 
 const UsersList = () => {
   const { id } = useParams()
-  const { getStudentsByGroup } = useStudents()
+  const { getStudents } = useStudents()
   const { deleteUser } = useContext(UsersContext)
 
   const [students, setStudents] = useState([])
 
   useEffect(() => {
-    getStudentsByGroup(id).then(({ data: { students } }) => setStudents(students))
+    ;(async () => {
+      const {
+        data: { students },
+      } = await getStudents(id)
+      setStudents(students)
+    })()
   }, [id])
 
   return (
