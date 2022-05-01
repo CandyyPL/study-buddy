@@ -7,13 +7,14 @@ const handlers = [
     return res(ctx.status(200), ctx.json(groups))
   }),
 
-  rest.get('/students/:groupId', (req, res, ctx) => {
-    if (req.params.groupId) {
-      const matchingStudents = students.filter(({ group }) => group === req.params.groupId)
+  rest.get('/students', (req, res, ctx) => {
+    const groupId = req.url.searchParams.get('group')
+    if (groupId) {
+      const matchingStudents = students.filter(({ group }) => group === groupId)
       return res(ctx.status(200), ctx.json({ students: matchingStudents }))
     }
 
-    return res(ctx.status(200), ctx.json({ groups }))
+    return res(ctx.status(200), ctx.json({ students }))
   }),
 ]
 

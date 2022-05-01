@@ -1,5 +1,6 @@
 import { Button } from 'components/Atoms/Button/Button.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
@@ -26,10 +27,22 @@ export const GroupInfo = styled.div`
   }
 
   ${Button} {
-    font-size: ${({ theme }) => theme.fontSize.ss};
     margin-left: 25px;
     padding: 0;
-    width: 150px;
+    width: 35px;
     height: 35px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.fontSize.m};
+    color: ${({ theme }) => theme.colors.darkGrey};
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    :hover {
+      background-color: ${({ theme }) => theme.colors.lightGrey};
+    }
   }
 `

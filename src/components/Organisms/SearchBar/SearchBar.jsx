@@ -1,6 +1,36 @@
-import { SearchBarWrapper, StatusInfo, Input } from './SearchBar.styles'
+import {
+  SearchBarWrapper,
+  StatusInfo,
+  Input,
+  SearchBarArea,
+  StyledResults,
+  StyledResultsItem,
+} from './SearchBar.styles'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useCombobox } from 'downshift'
 
 const SearchBar = () => {
+  const [allStudents, setAllStudents] = useState([])
+  const [matchingStundents, setMatchingStudents] = useState([])
+
+  useEffect(() => {
+    axios.get('/students').then(({ data: { students } }) => {
+      setAllStudents(students)
+    })
+  }, [])
+
+  const getMatchingStudents = ({ inputValue }) => {
+    const matching = allStudents.filter(({ name }) => name.toLowerCase().includes(inputValue.toLowerCase()))
+    if (matching.length) setMatchingStudents(matching)
+    else setMatchingStudents([{ id: '404', name: 'No matches found' }])
+  }
+
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
+    items: matchingStundents,
+    onInputValueChange: getMatchingStudents,
+  })
+
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -9,7 +39,21 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <Input placeholder='find student' />
+      <SearchBarArea {...getComboboxProps()}>
+        <Input isWithList={isOpen} placeholder='find student' {...getInputProps()} />
+        <StyledResults isVisible={isOpen} {...getMenuProps()}>
+          {isOpen &&
+            matchingStundents.map((item, index) => (
+              <StyledResultsItem
+                isHighlighted={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+                key={item.id}
+              >
+                {item.name}
+              </StyledResultsItem>
+            ))}
+        </StyledResults>
+      </SearchBarArea>
     </SearchBarWrapper>
   )
 }
