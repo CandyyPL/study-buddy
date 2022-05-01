@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     axios
-      .get(`/students/${currentGroup}`)
+      .get(`/students?group=${currentGroup}`)
       .then(({ data: { students } }) => setStudents(students))
       .catch((err) => console.log(err))
   }, [currentGroup])
@@ -32,7 +32,15 @@ const Dashboard = () => {
     <Wrapper>
       <GroupInfo>
         <StyledTitle>Group {currentGroup}</StyledTitle>
-        <Button>change group</Button>
+        <Link to='/dashboard/A'>
+          <Button>A</Button>
+        </Link>
+        <Link to='/dashboard/B'>
+          <Button>B</Button>
+        </Link>
+        <Link to='/dashboard/C'>
+          <Button>C</Button>
+        </Link>
       </GroupInfo>
       <UsersList users={students} />
     </Wrapper>
