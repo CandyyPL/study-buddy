@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { StyledList, Wrapper } from './UsersList.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
@@ -8,8 +8,14 @@ import { useStudents } from 'hooks/useStudents'
 
 const UsersList = () => {
   const { id } = useParams()
-  const { students } = useStudents({ groupId: id })
+  const { getStudentsByGroup } = useStudents()
   const { deleteUser } = useContext(UsersContext)
+
+  const [students, setStudents] = useState([])
+
+  useEffect(() => {
+    getStudentsByGroup(id).then(({ data: { students } }) => setStudents(students))
+  }, [id])
 
   return (
     <Wrapper>

@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export const useStudents = ({ groupId = '' } = {}) => {
-  const [groups, setGroups] = useState([])
-  const [students, setStudents] = useState([])
+export const useStudents = () => {
+  const getGroups = async () => {
+    try {
+      const result = await axios.get('/groups')
+      return result.data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
-  useEffect(() => {
-    axios
-      .get('/groups')
-      .then(({ data }) => setGroups(data))
-      .catch((err) => console.log(err))
-  }, [])
+  const getStudentsByGroup = async (groupId) => {
+    try {
+      const result = axios.get(`/students${groupId ? `?group=${groupId}` : ''}`)
+      return result
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
-  useEffect(() => {
-    if (!groupId) return
-    axios
-      .get(`/students${groupId ? `?group=${groupId}` : ''}`)
-      .then(({ data: { students } }) => setStudents(students))
-      .catch((err) => console.log(err))
-  }, [groupId])
-
-  return { groups, students }
+  return { getGroups, getStudentsByGroup }
 }

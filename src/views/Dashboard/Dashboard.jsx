@@ -5,9 +5,15 @@ import { useStudents } from 'hooks/useStudents'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import { Wrapper } from './Dashboard.styles'
 import { Button } from 'components/Atoms/Button/Button.styles'
+import { useEffect, useState } from 'react'
 
 const Dashboard = () => {
-  const { groups } = useStudents()
+  const { getGroups } = useStudents()
+  const [groups, setGroups] = useState([])
+
+  useEffect(() => {
+    getGroups().then((groups) => setGroups(groups))
+  }, [])
 
   const { id } = useParams()
 
