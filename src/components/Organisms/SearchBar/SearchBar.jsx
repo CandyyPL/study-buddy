@@ -1,29 +1,35 @@
-import { SearchBarWrapper, StatusInfo, Input, SearchBarArea, MatchList } from './SearchBar.styles'
-import { useEffect, useRef, useState } from 'react'
+import {
+  SearchBarWrapper,
+  StatusInfo,
+  Input,
+  SearchBarArea,
+  StyledResults,
+  StyledResultsItem,
+} from './SearchBar.styles'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useCombobox } from 'downshift'
 
 const SearchBar = () => {
-  const [inputValue, setInputValue] = useState('')
+  const [allStudents, setAllStudents] = useState([])
   const [matchingStundents, setMatchingStudents] = useState([])
-  const [showMatchList, setShowMatchList] = useState(false)
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value)
-  }
 
   useEffect(() => {
     axios.get('/students').then(({ data: { students } }) => {
-      const matching = students.filter(({ name }) => {
-        if (name.toLowerCase().includes(inputValue.toLowerCase())) return true
-        else return false
-      })
-      setMatchingStudents(matching)
+      setAllStudents(students)
     })
-  }, [inputValue])
+  }, [])
 
-  useEffect(() => {
-    setShowMatchList(inputValue && matchingStundents.length)
-  }, [inputValue, matchingStundents])
+  const getMatchingStudents = ({ inputValue }) => {
+    const matching = allStudents.filter(({ name }) => name.toLowerCase().includes(inputValue.toLowerCase()))
+    if (matching.length) setMatchingStudents(matching)
+    else setMatchingStudents([{ id: '404', name: 'No matches found' }])
+  }
+
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
+    items: matchingStundents,
+    onInputValueChange: getMatchingStudents,
+  })
 
   return (
     <SearchBarWrapper>
@@ -33,19 +39,20 @@ const SearchBar = () => {
           <strong>Teacher</strong>
         </p>
       </StatusInfo>
-      <SearchBarArea>
-        {showMatchList ? (
-          <Input withList placeholder='find student' value={inputValue} onChange={handleInputChange} />
-        ) : (
-          <Input placeholder='find student' value={inputValue} onChange={handleInputChange} />
-        )}
-        {showMatchList ? (
-          <MatchList>
-            {matchingStundents.map(({ id, name }) => (
-              <li key={id}>{name}</li>
+      <SearchBarArea {...getComboboxProps()}>
+        <Input isWithList={isOpen} placeholder='find student' {...getInputProps()} />
+        <StyledResults isVisible={isOpen} {...getMenuProps()}>
+          {isOpen &&
+            matchingStundents.map((item, index) => (
+              <StyledResultsItem
+                isHighlighted={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+                key={item.id}
+              >
+                {item.name}
+              </StyledResultsItem>
             ))}
-          </MatchList>
-        ) : null}
+        </StyledResults>
       </SearchBarArea>
     </SearchBarWrapper>
   )
