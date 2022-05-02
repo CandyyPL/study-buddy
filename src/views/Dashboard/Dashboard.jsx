@@ -1,4 +1,4 @@
-import UsersList from 'components/Organisms/UsersList/UsersList'
+import UsersList from 'components/Organisms/UsersList/StudentsList'
 import { GroupInfo } from './Dashboard.styles'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useStudents } from 'hooks/useStudents'
@@ -6,10 +6,23 @@ import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import { Wrapper } from './Dashboard.styles'
 import { Button } from 'components/Atoms/Button/Button.styles'
 import { useEffect, useState } from 'react'
+import { useModal } from 'hooks/useModal'
+import StudentDetails from 'components/Molecules/StudentDetails/StudentDetails'
 
 const Dashboard = () => {
-  const { getGroups } = useStudents()
+  const { getGroups, getStudentById } = useStudents()
   const [groups, setGroups] = useState([])
+  const [currentStudent, setCurrentStudent] = useState({})
+
+  const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal()
+
+  const handleOpenStudentDetails = async (id) => {
+    const result = await getStudentById(id)
+    const student = result.data.matchingStudent
+
+    setCurrentStudent(student)
+    handleOpenModal()
+  }
 
   useEffect(() => {
     ;(async () => {
@@ -36,7 +49,12 @@ const Dashboard = () => {
           <Button>C</Button>
         </Link>
       </GroupInfo>
-      <UsersList />
+      <UsersList handleOpenStudentDetails={handleOpenStudentDetails} />
+      {isOpen ? (
+        <Modal handleClose={handleCloseModal}>
+          <StudentDetails student={currentStudent} />
+        </Modal>
+      ) : null}
     </Wrapper>
   )
 }

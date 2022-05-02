@@ -1,4 +1,4 @@
-import UsersListItem from './UsersListItem'
+import UsersListItem from './StudentsListItem'
 
 export default {
   title: 'Components/Molecules/UsersListItem',

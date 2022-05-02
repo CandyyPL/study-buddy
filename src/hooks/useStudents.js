@@ -13,12 +13,21 @@ export const useStudents = () => {
 
   const getStudents = useCallback(async (groupId = '') => {
     try {
-      const result = axios.get(`/students${groupId ? `?group=${groupId}` : ''}`)
+      const result = axios.get(`/students${groupId ? `?groupId=${groupId}` : ''}`)
       return result
     } catch (e) {
       console.log(e)
     }
   }, [])
 
-  return { getGroups, getStudents }
+  const getStudentById = async (id) => {
+    try {
+      const result = axios.get(`/students?id=${id}`)
+      return result
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  return { getGroups, getStudents, getStudentById }
 }

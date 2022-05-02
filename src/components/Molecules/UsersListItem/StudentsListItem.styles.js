@@ -6,6 +6,7 @@ export const Wrapper = styled.li`
   position: relative;
   width: 100%;
   min-height: 80px;
+  cursor: pointer;
 
   :not(:last-child)::after {
     content: '';
