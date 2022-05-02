@@ -9,7 +9,7 @@ export const Button = styled.button`
   margin: 20px 0;
   padding: 10px;
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: bold;
   cursor: pointer;
 `

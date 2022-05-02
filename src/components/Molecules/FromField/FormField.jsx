@@ -4,14 +4,14 @@ import { Label } from 'components/Atoms/Label/Label.styles'
 import { Wrapper } from './FormField.styles'
 import React from 'react'
 
-const FormField = React.forwardRef(({ label, name, id, type = 'text', onChange, value }, ref) => {
+const FormField = ({ label, name, id, type = 'text', onChange, value }, ref) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>{label}</Label>
-      <Input ref={ref} name={name} id={id} type={type} onChange={onChange} value={value} data-testid={label} />
+      <Input name={name} id={id} type={type} onChange={onChange} value={value} data-testid={label} />
     </Wrapper>
   )
-})
+}
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,

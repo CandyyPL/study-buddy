@@ -1,7 +1,7 @@
-import { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect } from 'react'
 import { Wrapper } from './AddUser.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
-import FormField from 'components/Molecules/FromField/FromField'
+import FormField from 'components/Molecules/FromField/FormField'
 import { Button } from 'components/Atoms/Button/Button.styles'
 import { UsersContext } from 'providers/UsersProvider'
 import { useForm } from 'hooks/useForm'
@@ -16,16 +16,9 @@ const initialFormState = {
 
 const AddUser = () => {
   const context = useContext(UsersContext)
-  const inputRef = useRef(null)
 
   const { formValues, handleInputChange, handleClearFields, handleThrowError, handleToggleConsent } =
     useForm(initialFormState)
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [])
 
   const handleSubmitUser = (e) => {
     e.preventDefault()
@@ -40,14 +33,7 @@ const AddUser = () => {
   return (
     <Wrapper as='form' onSubmit={handleSubmitUser}>
       <StyledTitle>Add new Student</StyledTitle>
-      <FormField
-        ref={inputRef}
-        label='Name'
-        id='name'
-        name='name'
-        value={formValues.name}
-        onChange={handleInputChange}
-      />
+      <FormField label='Name' id='name' name='name' value={formValues.name} onChange={handleInputChange} />
       <FormField
         label='Attendance'
         id='attendance'
