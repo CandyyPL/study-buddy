@@ -1,4 +1,4 @@
-import Average from 'components/Atoms/Average/Average'
+import { StyledAverage } from 'components/Atoms/Average/Average.styles'
 import { StyledTitle } from 'components/Atoms/Title/Title.styles'
 import styled from 'styled-components'
 
@@ -20,6 +20,12 @@ export const MainInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+
+  ${StyledAverage} {
+    width: 65px;
+    height: 65px;
+    font-size: ${({ theme }) => theme.fontSize.l};
+  }
 
   ${StyledTitle} {
     margin: 0;

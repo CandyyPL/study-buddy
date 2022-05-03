@@ -22,7 +22,7 @@ const StudentDetails = ({ student }) => {
       <SubInfo>
         <h5>Average grades:</h5>
         {student.subAverages.map((e) => (
-          <SubInfoItem>
+          <SubInfoItem key={e.subject}>
             <p>{e.subject}</p>
             <Average avg={e.average}>{e.average}</Average>
           </SubInfoItem>
