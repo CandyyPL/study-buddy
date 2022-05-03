@@ -68,6 +68,6 @@ export const SubInfoItem = styled.div`
 
   p {
     font-size: ${({ theme }) => theme.fontSize.m};
-    width: 40%;
+    width: 45%;
   }
 `
