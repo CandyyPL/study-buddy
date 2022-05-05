@@ -10,9 +10,9 @@ const Navigation = () => {
         <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/dashboard'>
           Dashboard
         </StyledLink>
-        <StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/add-user'>
+        {/*<StyledLink className={(navData) => (navData.isActive ? 'active' : null)} to='/add-user'>
           Add user
-        </StyledLink>
+        </StyledLink>*/}
       </StyledNavList>
     </StyledNav>
   )

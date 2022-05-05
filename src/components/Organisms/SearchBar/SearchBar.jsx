@@ -12,25 +12,28 @@ import { useStudents } from 'hooks/useStudents'
 
 const SearchBar = () => {
   const [allStudents, setAllStudents] = useState([])
-  const [matchingStundents, setMatchingStudents] = useState([])
+  const [matchingStudents, setMatchingStudents] = useState([])
 
   const { getStudents } = useStudents()
 
   useEffect(() => {
     getStudents().then(({ data: { students } }) => setAllStudents(students))
-  }, [])
+  }, [getStudents])
 
   const getMatchingStudents = ({ inputValue }) => {
-    const matching = allStudents.filter(({ name }) => name.toLowerCase().includes(inputValue.toLowerCase()))
+    const matching = allStudents.filter(({ name }) =>
+      name.toLowerCase().includes(inputValue.toLowerCase())
+    )
 
     if (matching.length) setMatchingStudents(matching)
     else setMatchingStudents([{ id: '404', name: 'No matches found' }])
   }
 
-  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
-    items: matchingStundents,
-    onInputValueChange: getMatchingStudents,
-  })
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } =
+    useCombobox({
+      items: matchingStudents,
+      onInputValueChange: getMatchingStudents,
+    })
 
   return (
     <SearchBarWrapper>
@@ -44,12 +47,11 @@ const SearchBar = () => {
         <Input isWithList={isOpen} placeholder='find student' {...getInputProps()} />
         <StyledResults isVisible={isOpen} {...getMenuProps()}>
           {isOpen &&
-            matchingStundents.map((item, index) => (
+            matchingStudents.map((item, index) => (
               <StyledResultsItem
                 isHighlighted={highlightedIndex === index}
                 {...getItemProps({ item, index })}
-                key={item.id}
-              >
+                key={item.id}>
                 {item.name}
               </StyledResultsItem>
             ))}

@@ -7,10 +7,9 @@ export const Wrapper = styled.div`
   border-left: 1px solid ${({ theme }) => theme.colors.darkGrey};
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  padding: 0 40px;
-  padding-top: 25px;
+  padding: 40px;
+  overflow-y: auto;
 
   ${StyledTitle} {
     font-size: ${({ theme }) => theme.fontSize.xl};

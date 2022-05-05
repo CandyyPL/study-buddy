@@ -1,4 +1,4 @@
-import UsersList from 'components/Organisms/UsersList/StudentsList'
+import UsersList from 'components/Organisms/StudentsList/StudentsList'
 import { GroupInfo } from './Dashboard.styles'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useStudents } from 'hooks/useStudents'
@@ -9,25 +9,6 @@ import { useEffect, useState } from 'react'
 import { useModal } from 'hooks/useModal'
 import Modal from 'components/Organisms/Modal/Modal'
 import StudentDetails from 'components/Molecules/StudentDetails/StudentDetails'
-
-const studentData = {
-  id: '1',
-  name: 'Adam Romański',
-  attendance: '39%',
-  average: '3.5',
-  group: 'A',
-  course: 'Economy and finances',
-  subAverages: [
-    {
-      subject: 'Modern Economy',
-      average: '4.1',
-    },
-    {
-      subject: 'Trade and Logistics',
-      average: '2.9',
-    },
-  ],
-}
 
 const Dashboard = () => {
   const { getGroups, getStudentById } = useStudents()
@@ -71,7 +52,7 @@ const Dashboard = () => {
       </GroupInfo>
       <UsersList handleOpenStudentDetails={handleOpenStudentDetails} />
       <Modal isOpen={isOpen} handleClose={handleCloseModal}>
-        <StudentDetails student={studentData} />
+        <StudentDetails student={currentStudent} />
       </Modal>
     </Wrapper>
   )

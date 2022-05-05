@@ -19,11 +19,7 @@ export const NewsItemWrapper = styled.div`
   }
 
   &:not(:last-child) {
-    margin-bottom: 25px;
-  }
-
-  &:last-child {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
 
   ${Button} {
