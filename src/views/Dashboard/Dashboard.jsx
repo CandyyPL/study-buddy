@@ -1,4 +1,4 @@
-import UsersList from 'components/Organisms/UsersList/StudentsList'
+import UsersList from 'components/Organisms/StudentsList/StudentsList'
 import { GroupInfo } from './Dashboard.styles'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useStudents } from 'hooks/useStudents'

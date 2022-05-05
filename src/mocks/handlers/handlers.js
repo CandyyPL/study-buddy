@@ -1,5 +1,4 @@
 import { rest } from 'msw'
-import { students } from 'mocks/data/students'
 import { groups } from 'mocks/data/groups'
 import { db } from 'mocks/db'
 
@@ -22,6 +21,7 @@ const handlers = [
       return res(ctx.status(200), ctx.json({ matchingStudent }))
     }
 
+    const students = db.student.getAll()
     return res(ctx.status(200), ctx.json({ students }))
   }),
 ]

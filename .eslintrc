@@ -9,7 +9,7 @@
         "jsxSingleQuote": true,
         "semi": false,
         "endOfLine": "crlf",
-        "printWidth": 120
+        "printWidth": 100
       }
     ]
   },

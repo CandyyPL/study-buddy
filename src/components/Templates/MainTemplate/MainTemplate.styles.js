@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
   grid-template-rows: 120px 1fr;
   grid-template-columns: 200px 1fr 0.75fr;
   background-color: ${({ theme }) => theme.colors.lightLightGrey};
+  overflow-y: hidden;
 `
