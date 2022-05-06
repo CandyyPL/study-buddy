@@ -19,7 +19,6 @@ export const StyledList = styled.ul`
   padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   overflow-y: auto;
 `

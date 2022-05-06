@@ -71,3 +71,17 @@ export const StyledLink = styled(NavLink)`
     }
   }
 `
+
+export const LinkLikeText = styled.p`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.darkGrey};
+  position: relative;
+  margin: 20px 0;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
