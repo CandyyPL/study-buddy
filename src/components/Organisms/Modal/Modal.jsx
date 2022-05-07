@@ -5,7 +5,15 @@ const root = document.getElementById('root')
 
 const Modal = ({ isOpen, handleClose, children }) => {
   return (
-    <ModalWrapper isOpen={isOpen} onRequestClose={handleClose} appElement={root}>
+    <ModalWrapper
+      style={{
+        overlay: {
+          backgroundColor: '#444444c1',
+        },
+      }}
+      isOpen={isOpen}
+      onRequestClose={handleClose}
+      appElement={root}>
       {children}
       <Button onClick={handleClose}>Close</Button>
     </ModalWrapper>
